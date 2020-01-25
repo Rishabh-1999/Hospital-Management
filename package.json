@@ -1,0 +1,31 @@
+{
+  "name": "hospital-managment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rishabh-1999/Hospital-Managment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rishabh-1999/Hospital-Managment/issues"
+  },
+  "homepage": "https://github.com/Rishabh-1999/Hospital-Managment#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "http": "0.0.0",
+    "mongoose": "^5.8.9",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0"
+  }
+}
