@@ -1,10 +1,19 @@
-var mongoose = require('mongoose');
-
-
+const mongoose = require("mongoose");
+var mongoDB = process.env.DB_MONGO_OFFLINE;
 mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+mongoose.set("useCreateIndex", true);
 
-mongoose.connect("mongodb://localhost/nhs-app");
-
-module.exports = {
-    mongoose
-};
+mongoose.connect(
+    mongoDB, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    },
+    err => {
+        if (!err) {
+            console.log("MongoDB connected");
+        } else {
+            console.log("Error: " + err);
+        }
+    }
+);
