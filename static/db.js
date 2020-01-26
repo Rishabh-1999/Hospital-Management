@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-var mongoDB = process.env.DB_MONGO_OFFLINE;
+var mongoDB = process.env.DB_MONGO;
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 mongoose.set("useCreateIndex", true);
