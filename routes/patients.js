@@ -2,6 +2,7 @@ const express = require('express');
 const _ = require('lodash');
 const router = express.Router();
 
+/* Models */
 var {
     scoreOfDisease,
     Disease
@@ -62,10 +63,10 @@ router.post('/app/addpatient', (req, res) => {
 
         patient.save().then((patient) => {
             patient.updateScore();
-            res.status(200).redirect('/app');
+            res.status(200).redirect('/dashboard');
         }).catch((err) => {
             console.log(err);
-            res.status(400).redirect('/app');
+            res.status(400).redirect('/dashboard');
         });
     }
 });
@@ -90,7 +91,7 @@ router.get('/app/patient/:hospitalNumber', (req, res) => {
         res.status(200).render('patientPage');
     }).catch((err) => {
         console.log(err);
-        res.status(404).redirect('/app');
+        res.status(404).redirect('/dashboard');
     });
 });
 
@@ -102,7 +103,7 @@ router.get('/app/getpatient/:hospitalNumber', (req, res) => {
         res.status(200).send(patient);
     }).catch((err) => {
         req.flash('error_msg', 'Please enter the first name.');
-        res.status(404).redirect('/app');
+        res.status(404).redirect('/dashboard');
     });
 });
 
@@ -154,10 +155,10 @@ router.get('/app/deletepatient/:hospitalNumber', (req, res) => {
             }
 
             patient.remove().then((patients) => {
-                res.status(200).redirect('/app');
+                res.status(200).redirect('/dashboard');
             });
         }).catch((err) => {
-            res.status(400).redirect('/app');
+            res.status(400).redirect('/dashboard');
         });
 });
 

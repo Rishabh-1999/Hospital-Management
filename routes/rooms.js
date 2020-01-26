@@ -80,13 +80,13 @@ router.get('/app/updateroom/:hospitalNumber/:futureRoom', (req, res) => {
                         }
                     }
                 }
-                res.redirect('/app');
+                res.redirect('/dashboard');
             } else {
                 throw Error("Bad request to change the room. Check the parameters.");
             }
         }).catch((err) => {
             console.log(err);
-            res.redirect('/app');
+            res.redirect('/dashboard');
         });
 });
 
@@ -114,13 +114,13 @@ router.get('/app/swappatients/:patientWithRoom/:patientWithoutRoom', (req, res) 
                 patientWithoutRoom.room = roomOfPatient;
                 patientWithoutRoom.save();
 
-                res.redirect('/app');
+                res.redirect('/dashboard');
             } else {
                 throw Error("Bad request to change the room. Check the parameters.");
             }
         }).catch((err) => {
             console.log(err);
-            res.redirect('/app');
+            res.redirect('/dashboard');
         });
 });
 
