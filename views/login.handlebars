@@ -12,6 +12,13 @@
     <div class="container-fluid">
         <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="/images/logo.png" />
+            {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+            {{/if}}
+
+            {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+            {{/if}}
             <p id="profile-name" class="profile-name-card"></p>
             <form method="post" action="/login" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>

@@ -54,12 +54,6 @@ app.use(
   })
 );
 
-/* Passport Config */
-require("./config/passport")(passport);
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 /* Express Validator */
 app.use(
   expressValidator({
@@ -88,6 +82,12 @@ app.use(function (req, res, next) {
   res.locals.user = req.user || null;
   next();
 });
+
+/* Passport Config */
+require("./config/passport")(passport);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/app", (req, res, next) => {
   console.log("running")

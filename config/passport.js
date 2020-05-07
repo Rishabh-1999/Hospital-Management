@@ -16,20 +16,24 @@ module.exports = async function (passport) {
   });
 
   passport.use(
-    new LocalStrategy(function (username, password, done) {
+    new LocalStrategy({
+      passReqToCallback: true,
+    }, (req, username, password, done) => {
       User.getUserByUsername(username, function (err, user) {
         console.log(user)
         if (err) throw err;
         if (!user) {
-          return done(null, false, {
-            message: "User Not Registered",
-          });
+          req.flash('error_msg', "User Not Registered")
+          return done(null, false);
         }
 
         User.comparePassword(password, user.password, function (err, isMatch) {
           if (err) throw err;
           if (isMatch) return done(null, user);
-          else return done(null, false, "Invalid password");
+          else {
+            req.flash('error_msg', "Invalid Password")
+            return done(null, false);
+          }
         });
       });
     })
