@@ -4,6 +4,9 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 mongoose.set("useCreateIndex", true);
 
+if (process.env.NODE_ENV != "production")
+    mongoose.set("debug", true);
+
 mongoose.connect(
     mongoDB, {
         useNewUrlParser: true,
